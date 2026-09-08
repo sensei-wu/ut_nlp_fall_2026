@@ -45,3 +45,14 @@ when z is large negative, since $e^{-z}$ then exceeds float64 range; branch on t
 ### Key learnings
 
 The two models disagree. Perceptron $[−0.19, −0.60, 0.76, 0.32]$ vs LR $[−0.11, −0.53, 0.78, 0.33]$, normalized. Both separate the data, but they're different hyperplanes. The perceptron stops at the first separator it finds, while LR keeps optimizing past separation (until convergence condition).
+
+## 08.09.2026
+
+- Assignment 1 (sentiment analysis) required handcrafting perceptron and logistic regression classifiers
+- Implementation required adapting the standard algorithms that I have implemented in this repo. to use sparse vectors (tricky..)
+- I struggled initially to pass the threshold of around 75% in both cases
+- Passed the thresholds by increasing epochs (20→60) for both models. Regularization ($\lambda$ swept 1e-8..1e-4) and rare-word filtering both
+  measured as inert — dev moved by ~1 example.
+- Key finding: train accuracy saturates long before the loss does. At 20 epochs LR showed 99.3% train accuracy and looked converged, but
+  the loss was still falling and dev improved 1.5 points by epoch 60.
+- Single-run comparisons are worthless here. An unseeded $\lambda$ sweep showed a 2.2-point spread that vanished entirely once the seed was fixed.
