@@ -1,0 +1,5 @@
+# Python 3.11, Intel macOS (x86_64): torch 2.2.2 is the last release with Intel Mac wheels,
+# which requires numpy<2
+ipykernel==7.3.0
+numpy==1.26.4
+torch==2.2.2
