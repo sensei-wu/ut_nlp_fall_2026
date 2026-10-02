@@ -4,7 +4,7 @@ import numpy as np
 
 words = {"coffee", "tea", "film", "movie", "democracy"}
 vecs = {}
-data_path = Path(__file__).parent / "data" / "glove.6B.50d-relativized.txt"
+data_path = Path(__file__).parent.parent / "data" / "glove.6B.50d-relativized.txt"
 with data_path.open(encoding="utf-8") as f:
     for line in f:
         tok, *vals = line.rstrip().split(" ")
