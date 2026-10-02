@@ -22,3 +22,27 @@ I analyzed the result using Claude and found its following observation interesti
 Other observation:
 
 Test accuracy plateaus around 0.85–0.88 while train accuracy climbs to 0.96. That's a mild overfitting gap.
+
+## Replacing RNN with GRU
+
+A simple change in nn module call to replace RNN with GRU improved test accuracy and also gave a smoother learning. Results are below:
+
+```
+train 1139  test 750  labels ['rec.autos', 'sci.space']
+vocab size 4875
+glove: 2828/4875 words
+epoch 1  loss 0.694  train 0.653  test 0.589
+epoch 2  loss 0.620  train 0.805  test 0.733
+epoch 3  loss 0.408  train 0.860  test 0.812
+epoch 4  loss 0.281  train 0.901  test 0.861
+epoch 5  loss 0.209  train 0.934  test 0.879
+epoch 6  loss 0.141  train 0.971  test 0.887
+epoch 7  loss 0.097  train 0.989  test 0.907
+epoch 8  loss 0.038  train 0.992  test 0.907
+'the goalie made a great save in the third period'      -> sci.space (0.82)
+'nasa launched the shuttle into orbit'                  -> sci.space (1.00)
+'the ferrari was slow'                                  -> rec.autos (0.84)
+'there are speed limits'                                -> rec.autos (0.73)
+```
+
+Increasing maximum length of the sentences from 100 to 300 did not help much. More text might be giving diminishing returns here, because the topic is usually clear early in a post.
