@@ -1,6 +1,5 @@
-# RNN text classifier on 20 Newsgroups (2 topics: hockey vs space)
+# RNN text classifier on 20 Newsgroups (2 topics: autos vs space)
 # Same architecture as rnn_sentiment.py, but on real data so we can see if it generalizes.
-# Optional: init embeddings from GloVe if the file is there, otherwise learn from scratch.
 
 import os
 import re
